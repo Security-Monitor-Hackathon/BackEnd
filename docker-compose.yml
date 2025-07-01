@@ -1,0 +1,29 @@
+# Versão do Docker Compose a ser usada.
+version: '3.8'
+
+# Define os serviços (containers) que compõem a aplicação.
+services:
+  # Nome do nosso serviço. Pode ser qualquer nome.
+  cpted_analyzer:
+    # Nome para o container em execução, facilitando a identificação.
+    container_name: cpted-pipeline-container
+    
+    # Instruções de Build: Diz ao Compose como construir a imagem.
+    build:
+      # O contexto é o diretório atual ('.'), onde está o Dockerfile.
+      context: .
+      # Opcional, mas explícito: qual Dockerfile usar.
+      dockerfile: Dockerfile
+    
+    # Variáveis de Ambiente: A maneira correta e segura de usar seu .env.
+    # O Docker Compose lerá o arquivo .env na raiz do projeto e injetará
+    # as variáveis no ambiente do container, sem que elas sejam copiadas para a imagem.
+    env_file:
+      - .env
+      
+    # Volumes: Mapeia uma pasta do seu computador (host) para uma pasta dentro do container.
+    # Isso é essencial para persistir os dados gerados.
+    volumes:
+      # Mapeia a pasta ./data/reports do seu projeto para a pasta /app/data/reports dentro do container.
+      # Quando o pipeline.py salvar um arquivo em 'data/reports', ele aparecerá na sua máquina.
+      - ./data/reports:/app/data/reports

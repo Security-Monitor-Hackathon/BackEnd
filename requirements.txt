@@ -1,0 +1,22 @@
+# Essencial para a Etapa 1 do pipeline (Imagem -> Texto)
+#openai==1.89.0
+
+# Essencial para a Etapa 2 do pipeline (Texto -> JSON Estruturado)
+#google-genai==1.21.1
+
+# Essencial para validação de dados e schemas
+#pydantic==2.11.7
+
+# Essencial para carregar segredos do arquivo .env
+#python-dotenv==1.0.1  
+
+
+# Opcional, mas usado nos scripts auxiliares para gerar relatórios
+pandas==2.3.0
+
+Flask==2.2.5
+werkzeug==2.3.8
+psycopg2-binary
+
+# Usado para visualização de dados
+#folium
